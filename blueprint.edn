@@ -1,0 +1,10 @@
+{:itonami.blueprint/id "cloud-itonami-isco-9622"
+ :itonami.blueprint/name "Independent Handyman Practice"
+ :itonami.blueprint/isco-08 "9622"
+ :itonami.blueprint/domain :services/handyman
+ :itonami.blueprint/license "AGPL-3.0-or-later"
+ :itonami.blueprint/social-impact [:local-jobs :housing-quality :worker-safety]
+ :itonami.blueprint/governor :handyman-governor
+ :itonami.blueprint/robotics true
+ :itonami.blueprint/required-technologies [:robotics :forms :audit-ledger :bpmn]
+ :itonami.blueprint/status :public-oss}
