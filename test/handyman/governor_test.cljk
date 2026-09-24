@@ -1,5 +1,5 @@
 (ns handyman.governor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [handyman.store :as store]
             [handyman.governor :as governor]))
 
