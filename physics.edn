@@ -1,0 +1,31 @@
+;; What this vertical's robot physically does, declared for
+;; kotoba.robotics.process (kotoba-lang/robotics). `kbb -M:physics` runs it.
+;;
+;; README "Robotics premise": a general repair-support robot performs material
+;; handling, minor assembly and cleanup tasks for a handyperson (ISCO 9622).
+;; Its physical work: holding a board/panel up against the ceiling while it
+;; is fixed (work at height), and draining a domestic water-heater tank for
+;; the routine sediment flush.
+;;
+;; Every number without a cited source is marked `estimate` in its :basis.
+;; Replacing an estimate with a sourced value is this bot's growth work.
+{:physics/schema "itonami.physical-ai.spec.v1"
+ :repo "cloud-itonami/cloud-itonami-isco-9622"
+ :cases
+ [{:id :panel-up-to-ceiling
+   :kind :manipulator
+   :procedure "arm lifts a plasterboard panel or board from the trolley and presses it up against the ceiling joists for fixing"
+   :params {:l1-m 0.70 :l2-m 0.60 :m1-kg 9.0 :m2-kg 6.0
+            :from [0.60 0.10] :to [0.20 1.20] :duration-s 3.0 :steps 500}
+   :sweep {:param :payload-kg :values [5.0 10.0 15.0 20.0 25.0]}
+   :quantity :peak-tau1-nm
+   :limit {:max 250.0 :basis "estimate: continuous shoulder torque of a ~20 kg-payload arm on a mobile base"}
+   :boundary {:lo 1.0 :hi 60.0}}
+  {:id :water-heater-drain
+   :kind :tank-drain
+   :procedure "drain a 190 L domestic water-heater tank (0.196 m2 section) from 1.0 m to 0.05 m through its drain valve for the sediment flush"
+   :params {:tank-area-m2 0.196 :h0-m 1.0 :h-target-m 0.05 :cd 0.60 :q-in-m3s 0.0}
+   :sweep {:param :orifice-area-m2 :values [0.00005 0.0001 0.0002 0.0003 0.0005]}
+   :quantity :time-to-target-s
+   :limit {:max 600.0 :basis "estimate: drain within 10 minutes of the service visit"}
+   :boundary {:lo 0.00003 :hi 0.001}}]}
