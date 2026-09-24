@@ -1,5 +1,5 @@
 (ns handyman.actor-test
-  (:require [clojure.test :refer [deftest is testing]]
+  (:require [kotoba.test :refer [deftest is testing]]
             [handyman.actor :as actor]
             [handyman.store :as store]))
 
