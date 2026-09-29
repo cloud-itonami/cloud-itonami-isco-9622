@@ -1,6 +1,6 @@
 (ns handyman.actor
   "HandymanPracticeActor — the ISCO-08 9622 community handyman actor as a
-  `langgraph.graph/state-graph` (ADR-2607011000 / CLAUDE.md Actors
+  `langgraph.graph/state-graph` (ADR-2607011000 / AGENTS.md Actors
   section). One graph run = one handyman operation request
   (intake → advise → govern → decide → commit/hold, with a
   human-approval interrupt for escalated proposals). No infinite
